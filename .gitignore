@@ -1,0 +1,15 @@
+# Ignore Pycharm env #
+.idea/
+
+# Ignore virtual environment files #
+venv/
+
+# Ignore DecryptDock contents except .keep file #
+DecryptDock/*
+!DecryptDock/.keep
+# /*
+#  * Author: Group 10 : Gia Bao - Hoang Son - Duy Doan - The Anh
+#  *
+#  * Description: code giai  ma
+#  */
+
