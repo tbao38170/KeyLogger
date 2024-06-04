@@ -67,7 +67,6 @@ def main():
             print_err(f'Error occurred during {file_decrypt} decryption: {io_err}')
             sys.exit(1)
 
-
 if __name__ == '__main__':
     # Lấy thư mục làm việc hiện tại #
     decrypt_path = Path.cwd() / 'DecryptDock'

